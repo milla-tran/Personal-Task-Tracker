@@ -8,7 +8,7 @@ from src.tasks import add_task, get_tasks, toggle_task
 from src.habits import add_habit, get_habits, set_habit_done, is_habit_done_today
 from src.weather import get_weather
 
-st.set_page_config(page_title="Cute Habit Tracker", page_icon="👑", layout="wide")
+st.set_page_config(page_title="Meelo Habit Tracker", page_icon="", layout="wide")
 init_db()
 
 st.markdown(inject_css(), unsafe_allow_html=True)
