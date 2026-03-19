@@ -21,7 +21,7 @@ if "weather_api_key" not in st.session_state:
 left, right = st.columns([1.1, 1])
 
 with left:
-    st.markdown('<div class="main-title">Cute Habit Tracker 👑</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-title">Meelo Habit Tracker</div>', unsafe_allow_html=True)
     st.markdown('<div class="subtitle">Track your day in a cozy, fun way.</div>', unsafe_allow_html=True)
 
     image_path = Path("assets/meelo_main.png")
@@ -30,7 +30,7 @@ with left:
         st.image(image, use_container_width=True)
 
 with right:
-    st.markdown('<div class="cute-card"><b>Today’s Goal</b><br>Small steps still count 🌸</div>', unsafe_allow_html=True)
+    st.markdown('<div class="cute-card"><b>Today’s Goal</b><br>Be better than yesterday 🌸</div>', unsafe_allow_html=True)
 
     city = st.text_input("City", value=st.session_state.weather_city)
     api_key = st.text_input("OpenWeather API key", value=st.session_state.weather_api_key, type="password")
@@ -59,7 +59,7 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Tasks ✅")
+    st.subheader("Tasks")
     with st.form("task_form", clear_on_submit=True):
         title = st.text_input("Task name")
         category = st.text_input("Category")
@@ -110,6 +110,6 @@ st.divider()
 st.subheader("Daily Progress ⭐")
 st.progress(progress)
 st.markdown(
-    f'<div class="reward-card"><b>{done_items}/{total_items}</b> completed today. Keep going 💗</div>',
+    f'<div class="reward-card"><b>{done_items}/{total_items}</b> completed today. Keep at it 💗</div>',
     unsafe_allow_html=True
 )
