@@ -22,7 +22,7 @@ left, right = st.columns([1.1, 1])
 
 with left:
     st.markdown('<div class="main-title">Meelo Habit Tracker</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtitle">Track your day in a cozy, fun way.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="subtitle">Tracking my day :)</div>', unsafe_allow_html=True)
 
     image_path = Path("assets/meelo_main.png")
     if image_path.exists():
