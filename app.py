@@ -15,8 +15,6 @@ st.markdown(inject_css(), unsafe_allow_html=True)
 
 if "weather_city" not in st.session_state:
     st.session_state.weather_city = "San Antonio"
-if "weather_api_key" not in st.session_state:
-    st.session_state.weather_api_key = ""
 
 left, right = st.columns([1.1, 1])
 
@@ -33,26 +31,32 @@ with right:
     st.markdown('<div class="cute-card"><b>Today’s Goal</b><br>Be better than yesterday 🌸</div>', unsafe_allow_html=True)
 
     city = st.text_input("City", value=st.session_state.weather_city)
-    api_key = st.text_input("OpenWeather API key", value=st.session_state.weather_api_key, type="password")
 
-    st.session_state.weather_city = city
-    st.session_state.weather_api_key = api_key
+st.session_state.weather_city = city
 
-    if city and api_key:
-        try:
-            weather = get_weather(city, api_key)
-            if weather:
-                st.markdown(
-                    f'''
-                    <div class="weather-card">
-                        <b>Weather in {weather["city"]}</b><br>
-                        {weather["temp"]:.0f}°F · {weather["description"]} ☁️
-                    </div>
-                    ''',
-                    unsafe_allow_html=True
-                )
-        except Exception as e:
-            st.warning(f"Weather could not be loaded: {e}")
+if city:
+    try:
+        weather = get_weather(city)
+        if weather:
+            location_line = weather["city"]
+            if weather["region"]:
+                location_line += f", {weather['region']}"
+            if weather["country"]:
+                location_line += f", {weather['country']}"
+
+            st.markdown(
+                f'''
+                <div class="weather-card">
+                    <b>Weather in {location_line}</b><br>
+                    {weather["temp"]:.0f}°F · {weather["description"]}
+                </div>
+                ''',
+                unsafe_allow_html=True
+            )
+        else:
+            st.warning("City not found. Try a more specific name.")
+    except Exception as e:
+        st.warning(f"Weather could not be loaded: {e}")
 
 st.divider()
 
