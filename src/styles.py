@@ -2,7 +2,7 @@ def inject_css():
     return """
     <style>
     .stApp {
-        background-color: #D3A7B5;
+        background-color: #D0A9B7;
         color: #1F1E1F;
     }
 
